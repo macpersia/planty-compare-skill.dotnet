@@ -11,7 +11,7 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
-    <RootNamespace>planty_compare_skill</RootNamespace>
+    <RootNamespace>planty_compare_portal</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

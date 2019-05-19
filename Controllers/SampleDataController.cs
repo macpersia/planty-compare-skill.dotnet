@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace planty_compare_skill.Controllers
+namespace planty_compare_portal.Controllers
 {
     [Route("api/[controller]")]
     public class SampleDataController : Controller

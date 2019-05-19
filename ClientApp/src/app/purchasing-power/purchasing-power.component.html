@@ -1,0 +1,24 @@
+<h1>Purchasing Power</h1>
+
+<!-- <p>This component demonstrates fetching data from the server.</p> -->
+
+<p *ngIf="!records"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="records">
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>City</th>
+      <th>Category</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of records">
+      <td>{{ record.year }}</td>
+      <td>{{ record.city }}</td>
+      <td>{{ record.category == 'N' ? 'Net (New York = 100)' : 'Gross (New York = 100)'  }}</td>
+      <td>{{ record.value }}</td>
+    </tr>
+  </tbody>
+</table>

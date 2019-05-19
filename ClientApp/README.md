@@ -1,4 +1,4 @@
-# planty_compare_skill
+# planty_compare_portal
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 

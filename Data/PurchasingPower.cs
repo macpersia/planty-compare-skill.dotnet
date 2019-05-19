@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace planty_compare_skill.Data
+namespace planty_compare_portal.Data
 {
     public partial class PurchasingPower
     {

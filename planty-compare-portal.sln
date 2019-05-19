@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "planty-compare-skill", "planty-compare-skill.csproj", "{2256AA7F-72AD-45A9-AF52-3F08E56C1C59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "planty-compare-portal", "planty-compare-portal.csproj", "{2256AA7F-72AD-45A9-AF52-3F08E56C1C59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

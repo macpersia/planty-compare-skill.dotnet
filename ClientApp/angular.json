@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "planty_compare_skill": {
+    "planty_compare_portal": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -52,18 +52,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "planty_compare_skill:build"
+            "browserTarget": "planty_compare_portal:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "planty_compare_skill:build:production"
+              "browserTarget": "planty_compare_portal:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "planty_compare_skill:build"
+            "browserTarget": "planty_compare_portal:build"
           }
         },
         "test": {
@@ -122,7 +122,7 @@
         }
       }
     },
-    "planty_compare_skill-e2e": {
+    "planty_compare_portal-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -130,7 +130,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "planty_compare_skill:serve"
+            "devServerTarget": "planty_compare_portal:serve"
           }
         },
         "lint": {
@@ -145,5 +145,5 @@
       }
     }
   },
-  "defaultProject": "planty_compare_skill"
+  "defaultProject": "planty_compare_portal"
 }

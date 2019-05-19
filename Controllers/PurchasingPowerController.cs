@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using planty_compare_skill.Data;
+using planty_compare_portal.Data;
 
-namespace planty_compare_skill.Controllers
+namespace planty_compare_portal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
