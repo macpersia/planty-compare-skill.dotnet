@@ -29,8 +29,9 @@ namespace planty_compare_skill
                 configuration.RootPath = "ClientApp/dist";
             });
 
-            // services.AddDbContext<MyDbContext>(options =>
-            //     options.UseSqlServer(Configuration.GetConnectionString("PlantyCompare")));
+            services.AddDbContext<Data.MyDbContext>(options =>
+                // options.UseSqlServer(Configuration.GetConnectionString("PlantyCompare")));
+                options.UseSqlServer("Name=ConnectionStrings.PlantyCompare"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

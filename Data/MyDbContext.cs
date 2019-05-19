@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace planty_compare_skill.Entities
+namespace planty_compare_skill.Data
 {
     public partial class MyDbContext : DbContext
     {

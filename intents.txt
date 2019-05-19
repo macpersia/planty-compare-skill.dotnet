@@ -1,0 +1,2 @@
+Roughly, how much should one make in {targetCity} to maintain the same lifestyle as making {originIncome} in {originCity}?
+
