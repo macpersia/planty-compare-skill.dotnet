@@ -1,1 +1,1 @@
-# planty-compare-skill.dotnet
+# planty-compare-portal.dotnet
