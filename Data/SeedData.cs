@@ -35,7 +35,6 @@ namespace planty_compare_portal.Data
                     SeedMyDB(otherContext);
                 }
             }
-
         }
 
         private static async Task<string> EnsureUser(IServiceProvider serviceProvider,
@@ -53,8 +52,7 @@ namespace planty_compare_portal.Data
             return user.Id;
         }
 
-        private static async Task<IdentityResult> EnsureRole(IServiceProvider serviceProvider,
-                                                                      string uid, string role)
+        private static async Task<IdentityResult> EnsureRole(IServiceProvider serviceProvider, string uid, string role)
         {
             IdentityResult IR = null;
             var roleManager = serviceProvider.GetService<RoleManager<IdentityRole>>();
