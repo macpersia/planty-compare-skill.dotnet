@@ -14,6 +14,9 @@ using Microsoft.EntityFrameworkCore;
 using planty_compare_portal.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using planty_compare_portal.Authorization;
 
 namespace planty_compare_portal
 {
@@ -45,10 +48,45 @@ namespace planty_compare_portal
                     Configuration.GetConnectionString("MyIdentityConnection")));
 
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<MyIdentityDbContext>();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<IAuthorizationHandler, AdminsAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, PurchasingPowerManagerAuthorizationHandler>();
+
+            services.Configure<IdentityOptions>(options => 
+            {
+                // Password settings.
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                // options.Password.RequireLowercase = false;
+                // options.Password.RequiredLength = 6;
+                // options.Password.RequiredUniqueChars = 1;
+            });
+   
+            services.ConfigureApplicationCookie(options =>
+            {
+                // Cookie settings
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+                options.LoginPath = "/Identity/Account/Login";
+                options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+                options.SlidingExpiration = true;
+            });
+
+            services.AddMvc(config => 
+            {
+                // using Microsoft.AspNetCore.Mvc.Authorization;
+                // using Microsoft.AspNetCore.Authorization;
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -72,13 +110,13 @@ namespace planty_compare_portal
                 app.UseHsts();
             }
 
-            //// Shows UseCors with CorsPolicyBuilder.
-            //app.UseCors(builder =>
-            //{
-            //    builder.WithOrigins("http://localhost:4200",
-            //                        "http://localhost:5000",
-            //                        "https://localhost:5001");
-            //});
+            // Shows UseCors with CorsPolicyBuilder.
+            app.UseCors(builder =>
+            {
+               builder.WithOrigins("http://localhost:4200",
+                                   "http://localhost:5000",
+                                   "https://localhost:5001");
+            });
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
@@ -89,10 +127,10 @@ namespace planty_compare_portal
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    // name: "default",
-                    // template: "{controller}/{action=Index}/{id?}");
-                    name: "console",
+                    name: "default",
                     template: "{controller}/{action=Index}/{id?}");
+                    // name: "console",
+                    // template: "{controller}/{action=Index}/{id?}");
             });
 
             app.UseSpa(spa =>

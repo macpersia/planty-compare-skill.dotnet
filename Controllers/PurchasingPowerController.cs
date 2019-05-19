@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -25,6 +26,7 @@ namespace planty_compare_portal.Controllers
 
         // GET: api/purchasing-power
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<PurchasingPower>>> GetPurchasingPower()
         {
             return await _context.PurchasingPower.ToListAsync();
