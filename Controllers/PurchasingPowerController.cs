@@ -9,7 +9,8 @@ using planty_compare_portal.Data;
 
 namespace planty_compare_portal.Controllers
 {
-    [Route("api/[controller]")]
+    // [Route("api/[controller]")]
+    [Route("api/purchasing-power")]
     [ApiController]
     public class PurchasingPowerController : ControllerBase
     {
@@ -22,14 +23,14 @@ namespace planty_compare_portal.Controllers
             _context = context;
         }
 
-        // GET: api/PurchasingPower
+        // GET: api/purchasing-power
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PurchasingPower>>> GetPurchasingPower()
         {
             return await _context.PurchasingPower.ToListAsync();
         }
 
-        // GET: api/PurchasingPower/5
+        // GET: api/purchasing-power/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PurchasingPower>> GetPurchasingPower(int id)
         {
@@ -43,7 +44,7 @@ namespace planty_compare_portal.Controllers
             return purchasingPower;
         }
 
-        // PUT: api/PurchasingPower/5
+        // PUT: api/purchasing-power/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPurchasingPower(int id, PurchasingPower purchasingPower)
         {
@@ -73,7 +74,7 @@ namespace planty_compare_portal.Controllers
             return NoContent();
         }
 
-        // POST: api/PurchasingPower
+        // POST: api/purchasing-power
         [HttpPost]
         public async Task<ActionResult<PurchasingPower>> PostPurchasingPower(PurchasingPower purchasingPower)
         {
@@ -83,7 +84,7 @@ namespace planty_compare_portal.Controllers
             return CreatedAtAction("GetPurchasingPower", new { id = purchasingPower.Id }, purchasingPower);
         }
 
-        // DELETE: api/PurchasingPower/5
+        // DELETE: api/purchasing-power/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<PurchasingPower>> DeletePurchasingPower(int id)
         {
