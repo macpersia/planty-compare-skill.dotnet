@@ -1,9 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
+using planty_compare_portal.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,6 +29,25 @@ namespace planty_compare_portal
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddDbContext<Data.MyDbContext>(options =>
+                // options.UseSqlServer(Configuration.GetConnectionString("PlantyCompare")));
+                options.UseSqlServer("Name=ConnectionStrings.PlantyCompare"));
+
+            services.AddDbContext<Data.MyIdentityDbContext>(options =>
+                options.UseSqlite(
+                    Configuration.GetConnectionString("MyIdentityConnection")));
+
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddEntityFrameworkStores<MyIdentityDbContext>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
@@ -28,10 +55,6 @@ namespace planty_compare_portal
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-
-            services.AddDbContext<Data.MyDbContext>(options =>
-                // options.UseSqlServer(Configuration.GetConnectionString("PlantyCompare")));
-                options.UseSqlServer("Name=ConnectionStrings.PlantyCompare"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +63,7 @@ namespace planty_compare_portal
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -58,12 +82,16 @@ namespace planty_compare_portal
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
             app.UseSpaStaticFiles();
 
+            app.UseAuthentication();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
+                    // name: "default",
+                    // template: "{controller}/{action=Index}/{id?}");
+                    name: "console",
                     template: "{controller}/{action=Index}/{id?}");
             });
 
