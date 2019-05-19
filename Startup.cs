@@ -129,8 +129,6 @@ namespace planty_compare_portal
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
-                    // name: "console",
-                    // template: "{controller}/{action=Index}/{id?}");
             });
 
             app.UseSpa(spa =>
@@ -142,8 +140,8 @@ namespace planty_compare_portal
 
                 if (env.IsDevelopment())
                 {
-                    // spa.UseAngularCliServer(npmScript: "start");
-                     spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+                    spa.UseAngularCliServer(npmScript: "start");
+                    // spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
                 }
 
                 // spa.UseSpaPrerendering(options => {
