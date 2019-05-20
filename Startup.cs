@@ -118,7 +118,7 @@ namespace planty_compare_portal
                                    "https://localhost:5001");
             });
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSpaStaticFiles();

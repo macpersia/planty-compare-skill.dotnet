@@ -12,7 +12,7 @@ export class PurchasingPowerComponent {
 
     // TODO: parameterize the base url
     // const endpoint = baseUrl + 'api/SampleData/WeatherForecasts';
-    const endpoint = 'https://localhost:5001/api/purchasing-power';
+    const endpoint = 'http://localhost:5000/api/purchasing-power';
     
     http.get<PurchasingPower[]>(endpoint).subscribe(result => {
       this.records = result;
