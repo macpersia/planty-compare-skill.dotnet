@@ -21,7 +21,7 @@ namespace planty_compare_portal.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Name=ConnectionStrings.PlantyCompare");
+                optionsBuilder.UseSqlServer("Name=ConnectionStrings:PlantyCompare");
             }
         }
 
