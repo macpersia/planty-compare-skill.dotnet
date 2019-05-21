@@ -83,6 +83,7 @@ namespace planty_compare_portal.Data
 
         public static void SeedMyDB(MyDbContext context)
         {
+	    /*
             if (context.PurchasingPower.Any())
             {
                 return;   // DB has been seeded
@@ -105,6 +106,7 @@ namespace planty_compare_portal.Data
             //     }
             // );
             // context.SaveChanges();
+	    */
         }
     }
 }

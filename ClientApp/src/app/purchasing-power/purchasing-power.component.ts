@@ -11,8 +11,8 @@ export class PurchasingPowerComponent {
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
     // TODO: parameterize the base url
-    // const endpoint = baseUrl + 'api/SampleData/WeatherForecasts';
-    const endpoint = 'http://localhost:5000/api/purchasing-power';
+    const endpoint = baseUrl + 'api/purchasing-power';
+    // const endpoint = 'http://localhost:5000/api/purchasing-power';
     
     http.get<PurchasingPower[]>(endpoint).subscribe(result => {
       this.records = result;

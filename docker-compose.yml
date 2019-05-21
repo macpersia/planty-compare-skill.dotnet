@@ -3,7 +3,7 @@ services:
     planty-compare-portal:
         build: .
         ports:
-            - "5000:80"
+            - "8080:80"
         environment:
             CONNECTION_STRING: "Server=planty-compare-db;Database=planty_compare_db;User Id=sa;Password=${SA_PASSWORD}"
         depends_on:
