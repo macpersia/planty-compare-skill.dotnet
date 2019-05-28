@@ -24,14 +24,19 @@ namespace planty_compare_portal.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         // GET: api/purchasing-power
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<PurchasingPower>>> GetPurchasingPower()
         {
-            return await _context.PurchasingPower.ToListAsync();
+            return await _context.PurchasingPower
+                            .OrderByDescending(row => row.Category)
+                            .OrderBy(row => row.City)
+                            .OrderByDescending(row => row.Year)
+                            .ToListAsync();
         }
 
+        [AllowAnonymous]
         // GET: api/purchasing-power/5
         [HttpGet("{id}")]
         public async Task<ActionResult<PurchasingPower>> GetPurchasingPower(int id)

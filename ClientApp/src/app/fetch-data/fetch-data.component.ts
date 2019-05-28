@@ -11,8 +11,8 @@ export class FetchDataComponent {
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
 
     // TODO: parameterize the base url
-    // const endpoint = baseUrl + 'api/SampleData/WeatherForecasts';
-    const endpoint = 'https://localhost:5001/' + 'api/SampleData/WeatherForecasts';
+    const endpoint = baseUrl + 'api/SampleData/WeatherForecasts';
+    // const endpoint = 'http://localhost:5000/' + 'api/SampleData/WeatherForecasts';
     
     http.get<WeatherForecast[]>(endpoint).subscribe(result => {
       this.forecasts = result;

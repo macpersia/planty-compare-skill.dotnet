@@ -1,0 +1,16 @@
+version: "3"
+services:
+    planty-compare-portal:
+        build: .
+        ports:
+            - "8080:80"
+        environment:
+            CONNECTION_STRING: "Server=planty-compare-db;Database=planty_compare_db;User Id=sa;Password=${SA_PASSWORD}"
+        depends_on:
+            - planty-compare-db
+    planty-compare-db:
+        #image: "mcr.microsoft.com/mssql/server"
+        image: "mcr.microsoft.com/mssql/server:2017-latest-ubuntu"
+        environment:
+            SA_PASSWORD: "${SA_PASSWORD}"
+            ACCEPT_EULA: "Y"

@@ -41,7 +41,7 @@ namespace planty_compare_portal
 
             services.AddDbContext<Data.MyDbContext>(options =>
                 // options.UseSqlServer(Configuration.GetConnectionString("PlantyCompare")));
-                options.UseSqlServer("Name=ConnectionStrings.PlantyCompare"));
+                options.UseSqlServer("Name=ConnectionStrings:PlantyCompare"));
 
             services.AddDbContext<Data.MyIdentityDbContext>(options =>
                 options.UseSqlite(
@@ -118,7 +118,7 @@ namespace planty_compare_portal
                                    "https://localhost:5001");
             });
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
             app.UseSpaStaticFiles();

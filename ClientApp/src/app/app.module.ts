@@ -16,8 +16,8 @@ import { PurchasingPowerComponent } from './purchasing-power/purchasing-power.co
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    // CounterComponent,
-    // FetchDataComponent,
+    CounterComponent,
+    FetchDataComponent,
     PurchasingPowerComponent
   ],
   imports: [
